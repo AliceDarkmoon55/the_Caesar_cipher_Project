@@ -1,20 +1,14 @@
-answer = input('If you want to encode, enter 1. If you want to decode, enter 2.\n')
-if answer == '1':
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+try:
+    print('If you want to encode, enter natural number. If you want to decode, number less zero.\n')
+    alphabet = ' abcdefghijklmnopqrstuvwxyz'
     k = int(input('enter cipher key: '))
+except ValueError:
+    print('It isn\'t an integer number. Please try again')
+try:
     phrase = input('enter phrase only with small letters: ').strip()
     text = ''
     for i in phrase:
         text = text + alphabet[(alphabet.index(i) + k) % len(alphabet)]
     print(text + '\n')
-elif answer == '2':
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    k = int(input('enter cipher key: '))
-    phrase = input('enter phrase only with small letters: ').strip()
-    text = ''
-    for i in phrase:
-        text = text + alphabet[(alphabet.index(i) - k) % len(alphabet)]
-    print(text + '\n')
-else:
-    print('There is no such command. Please try again')
-
+except ValueError:
+    print('It isn\'t a text. Please try again')
